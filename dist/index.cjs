@@ -31,9 +31,9 @@ var CrudClient = class {
   }
   async request(method, path = "", data) {
     const BaseUrl = `${this.apiUri}${path}`;
-    const add = `apiKey=${this.apiKey}`;
+    const add = `?apiKey=${this.apiKey}`;
     let url;
-    if (path != "") {
+    if (BaseUrl.includes("?")) {
       url = BaseUrl + "&" + add;
     } else {
       url = BaseUrl + "?" + add;
