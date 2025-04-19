@@ -1,5 +1,3 @@
-import { log } from "console";
-
 type CrudConfig = {
   apiKey: string;
   apiUri: string;
@@ -24,8 +22,6 @@ export class CrudClient {
     else {
       url = BaseUrl + '?' + add;
     }
-    log(url);
-
     const options: RequestInit = {
       method,
       headers: {

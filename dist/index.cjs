@@ -23,7 +23,6 @@ __export(index_exports, {
   CrudClient: () => CrudClient
 });
 module.exports = __toCommonJS(index_exports);
-var import_console = require("console");
 var CrudClient = class {
   constructor(config) {
     this.apiKey = config.apiKey;
@@ -38,7 +37,6 @@ var CrudClient = class {
     } else {
       url = BaseUrl + "?" + add;
     }
-    (0, import_console.log)(url);
     const options = {
       method,
       headers: {
