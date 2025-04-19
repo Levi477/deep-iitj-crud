@@ -1,15 +1,21 @@
 {
   "name": "deep-iitj-crud",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.cjs",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build" : "tsup",
-    "dev" : "tsup --dev"
+    "build": "tsup src/index.ts",
+    "dev": "tsup --dev"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "formpilot"
+  ],
+  "author": "Deep Gajjar",
   "license": "ISC",
-  "description": "",
+  "description": "A library to utilize crud-db platform",
+  "type": "module",
   "devDependencies": {
     "@types/node": "^22.14.1",
     "eslint": "^9.25.0",

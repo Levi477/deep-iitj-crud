@@ -1,4 +1,3 @@
-// crublibrary.ts
 type CrudConfig = {
   apiKey: string;
   apiUri: string;
@@ -14,7 +13,9 @@ export class CrudClient {
   }
 
   private async request(method: string, path: string = '', data?: any) {
+    // Ensure the URL is correctly formatted, including the API key
     const url = `${this.apiUri}${path}?apiKey=${this.apiKey}`;
+
     const options: RequestInit = {
       method,
       headers: {
@@ -36,19 +37,23 @@ export class CrudClient {
   }
 
   async create(data: Record<string, any>) {
-    return this.request('POST', '', data);
+    // Use POST method to create a new entry
+    return this.request('POST', '/api/create', data);
   }
 
   async read(id?: string) {
-    const path = id ? `/${id}` : '';
+    // Use GET method to retrieve data by id (or all data if no id provided)
+    const path = id ? `/api/get?id=${id}` : '/api/get';
     return this.request('GET', path);
   }
 
   async update(id: string, data: Record<string, any>) {
-    return this.request('PUT', `/${id}`, data);
+    // Use PUT method to update an existing entry
+    return this.request('PUT', `/api/update?id=${id}`, data);
   }
 
   async delete(id: string) {
-    return this.request('DELETE', `/${id}`);
+    // Use DELETE method to delete an entry
+    return this.request('DELETE', `/api/delete?id=${id}`);
   }
 }
