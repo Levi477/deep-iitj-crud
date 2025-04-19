@@ -15,8 +15,15 @@ export class CrudClient {
   }
 
   private async request(method: string, path: string = '', data?: any) {
-    // Ensure the URL is correctly formatted, including the API key
-    const url = `${this.apiUri}${path}?apiKey=${this.apiKey}`;
+    const BaseUrl = `${this.apiUri}${path}`;
+    const add = `apiKey=${this.apiKey}`;
+    let url;
+    if(path != ''){
+      url = BaseUrl + '&' + add;
+    }
+    else {
+      url = BaseUrl + '?' + add;
+    }
     log(url);
 
     const options: RequestInit = {

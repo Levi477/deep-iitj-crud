@@ -30,7 +30,14 @@ var CrudClient = class {
     this.apiUri = config.apiUri.replace(/\/+$/, "");
   }
   async request(method, path = "", data) {
-    const url = `${this.apiUri}${path}?apiKey=${this.apiKey}`;
+    const BaseUrl = `${this.apiUri}${path}`;
+    const add = `apiKey=${this.apiKey}`;
+    let url;
+    if (path != "") {
+      url = BaseUrl + "&" + add;
+    } else {
+      url = BaseUrl + "?" + add;
+    }
     (0, import_console.log)(url);
     const options = {
       method,
