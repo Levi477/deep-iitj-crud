@@ -23,6 +23,7 @@ __export(index_exports, {
   CrudClient: () => CrudClient
 });
 module.exports = __toCommonJS(index_exports);
+var import_console = require("console");
 var CrudClient = class {
   constructor(config) {
     this.apiKey = config.apiKey;
@@ -30,6 +31,7 @@ var CrudClient = class {
   }
   async request(method, path = "", data) {
     const url = `${this.apiUri}${path}?apiKey=${this.apiKey}`;
+    (0, import_console.log)(url);
     const options = {
       method,
       headers: {
@@ -47,17 +49,17 @@ var CrudClient = class {
     return response.json();
   }
   async create(data) {
-    return this.request("POST", "", data);
+    return this.request("POST", "/api/create", data);
   }
   async read(id) {
-    const path = id ? `/${id}` : "";
+    const path = id ? `/api/get?id=${id}` : "/api/get";
     return this.request("GET", path);
   }
   async update(id, data) {
-    return this.request("PUT", `/${id}`, data);
+    return this.request("PUT", `/api/update?id=${id}`, data);
   }
   async delete(id) {
-    return this.request("DELETE", `/${id}`);
+    return this.request("DELETE", `/api/delete?id=${id}`);
   }
 };
 // Annotate the CommonJS export names for ESM import in node:
