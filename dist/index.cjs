@@ -49,17 +49,17 @@ var CrudClient = class {
     return response.json();
   }
   async create(data) {
-    return this.request("POST", "/api/crud/create", data);
+    return this.request("POST", "/api/create", data);
   }
   async read(id) {
-    const path = id ? `/api/crud/get?id=${id}` : "/api/get";
+    const path = id ? `/api/get?id=${id}` : "/api/get";
     return this.request("GET", path);
   }
   async update(id, data) {
-    return this.request("PUT", `/api/crud/update?id=${id}`, data);
+    return this.request("PUT", `/api/update?id=${id}`, data);
   }
   async delete(id) {
-    return this.request("DELETE", `/api/crud/delete?id=${id}`);
+    return this.request("DELETE", `/api/delete?id=${id}`);
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

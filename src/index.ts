@@ -41,22 +41,22 @@ export class CrudClient {
 
   async create(data: Record<string, any>) {
     // Use POST method to create a new entry
-    return this.request('POST', '/api/crud/create', data);
+    return this.request('POST', '/api/create', data);
   }
 
   async read(id?: string) {
     // Use GET method to retrieve data by id (or all data if no id provided)
-    const path = id ? `/api/crud/get?id=${id}` : '/api/get';
+    const path = id ? `/api/get?id=${id}` : '/api/get';
     return this.request('GET', path);
   }
 
   async update(id: string, data: Record<string, any>) {
     // Use PUT method to update an existing entry
-    return this.request('PUT', `/api/crud/update?id=${id}`, data);
+    return this.request('PUT', `/api/update?id=${id}`, data);
   }
 
   async delete(id: string) {
     // Use DELETE method to delete an entry
-    return this.request('DELETE', `/api/crud/delete?id=${id}`);
+    return this.request('DELETE', `/api/delete?id=${id}`);
   }
 }
