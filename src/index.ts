@@ -1,3 +1,5 @@
+import { log } from "console";
+
 type CrudConfig = {
   apiKey: string;
   apiUri: string;
@@ -15,6 +17,7 @@ export class CrudClient {
   private async request(method: string, path: string = '', data?: any) {
     // Ensure the URL is correctly formatted, including the API key
     const url = `${this.apiUri}${path}?apiKey=${this.apiKey}`;
+    log(url);
 
     const options: RequestInit = {
       method,
